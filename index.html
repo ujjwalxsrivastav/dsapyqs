@@ -173,11 +173,11 @@
             <div class="nav">
                 <div class="nav-item active" onclick="filter('all',this)">All Questions</div>
                 <div class="nav-item" onclick="filter('pred',this)">⭐ Predicted Questions</div>
-                <div class="nav-item" onclick="filter(1,this)">Unit 1 – Basics & Functions</div>
-                <div class="nav-item" onclick="filter(2,this)">Unit 2 – Constructors & Overloading</div>
-                <div class="nav-item" onclick="filter(3,this)">Unit 3 – Inheritance & Polymorphism</div>
-                <div class="nav-item" onclick="filter(4,this)">Unit 4 – Templates & Exceptions</div>
-                <div class="nav-item" onclick="filter(5,this)">Unit 5 – STL & Strings</div>
+                <div class="nav-item" onclick="filter(1,this)">Unit 1 – Introduction to DSA</div>
+                <div class="nav-item" onclick="filter(2,this)">Unit 2 – Stacks & Queues</div>
+                <div class="nav-item" onclick="filter(3,this)">Unit 3 – Linked Lists</div>
+                <div class="nav-item" onclick="filter(4,this)">Unit 4 – Trees and graphs</div>
+                <div class="nav-item" onclick="filter(5,this)">Unit 5 – Sorting & Hashing</div>
             </div>
         </aside>
         <main>
@@ -335,15 +335,13 @@
             render(data)
         }
 
-        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); el.classList.add('active'); let data = Q, t = 'All Questions'; if (f !== 'all') { data = Q.filter(x => x.u === f); t = 'Unit ' + f + ' Questions' } title.innerText = t; render(data)
-
-            // ===== FINAL COUNT AUDIT =====
-            (function () {
-                const unitCount = {};
-                Q.forEach(q => { unitCount[q.u] = (unitCount[q.u] || 0) + 1 });
-                console.log("TOTAL QUESTIONS =", Q.length);
-                console.log("UNIT-WISE COUNT =", unitCount);
-            })();
+        // ===== FINAL COUNT AUDIT =====
+        (function () {
+            const unitCount = {};
+            Q.forEach(q => { unitCount[q.u] = (unitCount[q.u] || 0) + 1 });
+            console.log("TOTAL QUESTIONS =", Q.length);
+            console.log("UNIT-WISE COUNT =", unitCount);
+        })();
 
         render(Q);
     </script>
