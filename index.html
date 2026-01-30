@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OOPS | Master Question Bank</title>
+<style>
+:root{--bg:#f8fafc;--card:#ffffff;--primary:#0f172a;--accent:#10b981;--muted:#64748b;--border:#e2e8f0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,system-ui;background:var(--bg);color:var(--primary);height:100vh;overflow:hidden}
+#app{display:flex;height:100vh}
+aside{width:280px;background:var(--primary);color:#fff;padding:28px}
+aside h1{font-size:1.4rem;margin-bottom:6px}
+aside p{font-size:.8rem;opacity:.6;margin-bottom:30px}
+.nav{display:flex;flex-direction:column;gap:8px;overflow-y:auto}
+.nav-item{padding:12px 16px;border-radius:8px;cursor:pointer;color:#94a3b8;font-size:.95rem}
+.nav-item:hover,.nav-item.active{background:var(--accent);color:#fff}
+main{flex:1;overflow-y:auto;padding:40px}
+.header{display:flex;justify-content:space-between;align-items:end;border-bottom:1px solid var(--border);padding-bottom:20px;margin-bottom:30px}
+.header h2{font-size:1.8rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:0 4px 6px rgba(0,0,0,.05)}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.tag{font-size:.65rem;font-weight:700;padding:4px 8px;border-radius:4px}
+.unit{background:#f1f5f9;color:#475569}
+.diff-easy{background:#ecfeff;color:#0369a1}
+.diff-med{background:#fefce8;color:#854d0e}
+.diff-hard{background:#fef2f2;color:#991b1b}
+.q{font-weight:600;line-height:1.5;margin-bottom:18px}
+.qno{display:block;font-size:.75rem;font-weight:700;color:#475569;margin-bottom:6px}
+.meta{font-size:.8rem;color:var(--muted);border-top:1px solid var(--border);padding-top:12px;display:flex;justify-content:space-between}
+</style>
+</head>
+<body>
+<div id="app">
+<aside>
+<h1>OOPS (C++)</h1>
+<p>Master Question Bank (2024–25)</p>
+<div class="nav">
+<div class="nav-item active" onclick="filter('all',this)">All Questions</div>
+<div class="nav-item" onclick="filter('pred',this)">⭐ Predicted Questions</div>
+<div class="nav-item" onclick="filter(1,this)">Unit 1 – Basics & Functions</div>
+<div class="nav-item" onclick="filter(2,this)">Unit 2 – Constructors & Overloading</div>
+<div class="nav-item" onclick="filter(3,this)">Unit 3 – Inheritance & Polymorphism</div>
+<div class="nav-item" onclick="filter(4,this)">Unit 4 – Templates & Exceptions</div>
+<div class="nav-item" onclick="filter(5,this)">Unit 5 – STL & Strings</div>
+</div>
+</aside>
+<main>
+<div class="header"><h2 id="title">All Questions</h2><div id="count"></div></div>
+<div id="grid" class="grid"></div>
+</main>
+</div>
+<script>
+const Q=[
+// ================= UNIT 1 : INTRODUCTION, SEARCHING, COMPLEXITY =================
+{u:1,no:"2023Q1(a)",q:"Differentiate linear search and binary search.",p:"2023-24",m:5,d:"Easy"},
+{u:1,no:"2023Q1(b)",q:"Define Time-Space trade-off.",p:"2023-24",m:5,d:"Easy"},
+{u:1,no:"2023Q1(f)",q:"Define best case, average case and worst case for analyzing the complexity of a program.",p:"2023-24",m:5,d:"Easy"},
+{u:1,no:"2023Q2(a)",q:"What is an algorithm? Explain time and space complexity and their trade-off.",p:"2023-24 Even",m:5,d:"Easy"},
+{u:1,no:"2023Q2(b)",q:"Describe linear search and analyze its best, average and worst case time complexity.",p:"2023-24 Even",m:5,d:"Easy"},
+{u:1,no:"2024Q1(a)(i)",q:"Explain basic operations on data structures with examples.",p:"2024-25 Even",m:5,d:"Easy"},
+{u:1,no:"2024Q1(a)(ii)",q:"Differentiate asymptotic notations with suitable graphs.",p:"2024-25 Even",m:5,d:"Medium"},
+{u:1,no:"2024Q1(c)",q:"Perform binary search on given sorted array and show steps.",p:"2024-25 Even",m:10,d:"Medium"},
+
+{u:1,no:"2023Q1(c)",q:"Explain asymptotic notations Big-O, Big-Ω and Big-Θ with suitable examples.",p:"2023-24",m:10,d:"Medium"},
+{u:1,no:"2023Q1(d)",q:"Explain binary search algorithm and analyze best, average and worst case complexities.",p:"2023-24",m:10,d:"Medium"},
+{u:1,no:"2024Q1(b)",q:"Explain time complexity and space complexity of an algorithm.",p:"2024-25 Even",m:5,d:"Easy"},
+{u:1,no:"2024Q1(d)",q:"Compare linear search and binary search with complexity analysis.",p:"2024-25 Even",m:10,d:"Easy"},
+{u:1,no:"2022Q1(a)",q:"Define data structure. Explain classification of data structures.",p:"2022-23",m:5,d:"Easy"},
+{u:1,no:"2022Q1(b)",q:"Explain elementary data organizations with examples.",p:"2022-23",m:5,d:"Easy"},
+{u:1,no:"2022Q1(c)",q:"Explain insertion, deletion and traversal operations on data structures.",p:"2022-23",m:10,d:"Easy"},
+
+{u:1,no:"2023EvenQ1(e)",q:"Explain time-space trade off with suitable example.",p:"2023-24 Even",m:5,d:"Easy"},
+{u:1,no:"2023EvenQ1(f)",q:"Explain algorithm analysis with example.",p:"2023-24 Even",m:5,d:"Easy"},
+{u:1,no:"2024OddQ1(a)",q:"Explain best case, worst case and average case analysis of algorithm.",p:"2024-25 Odd",m:5,d:"Easy"},
+{u:1,no:"2024OddQ1(b)",q:"Write algorithm for linear search and analyze its complexity.",p:"2024-25 Odd",m:10,d:"Easy"},
+{u:1,no:"2022Q1(d)",q:"Explain asymptotic notations with graphical representation.",p:"2022-23",m:10,d:"Medium"},
+{u:1,no:"2022Q1(e)",q:"Perform binary search on given data and show all steps.",p:"2022-23",m:10,d:"Medium"},
+
+{u:1,no:"2023OddQ2(a)",q:"Explain searching techniques. Discuss linear and binary search with suitable examples.",p:"2023-24 Odd",m:10,d:"Easy"},
+{u:1,no:"2023OddQ2(b)",q:"Explain asymptotic notation and write properties of Big-O notation.",p:"2023-24 Odd",m:10,d:"Medium"},
+{u:1,no:"2024EvenQ1(e)",q:"What is time complexity? Explain with example.",p:"2024-25 Even",m:5,d:"Easy"},
+{u:1,no:"2024EvenQ1(f)",q:"What is space complexity? Explain with example.",p:"2024-25 Even",m:5,d:"Easy"},
+{u:1,no:"2022Q1(f)",q:"Differentiate between linear and non-linear data structures.",p:"2022-23",m:5,d:"Easy"},
+
+// ================= UNIT 2 : STACKS & QUEUES =================
+{u:2,no:"2023Q5(a)",q:"What do you mean by stack? Explain all stack operations with example.",p:"2023-24",m:10,d:"Easy"},
+{u:2,no:"2023Q4(c)",q:"What is circular queue? Write a C code to insert an element in circular queue.",p:"2023-24",m:10,d:"Medium"},
+{u:2,no:"2023Q2(d)",q:"Write short note on Priority Queue.",p:"2023-24",m:5,d:"Easy"},
+{u:2,no:"2024Q2(a)",q:"Evaluate stack and queue operations and postfix expression.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:2,no:"2024Q2(b)",q:"Convert infix expression into postfix using stack.",p:"2024-25 Even",m:10,d:"Medium"},
+
+{u:2,no:"2022Q2(a)",q:"Define stack. Write algorithms for push and pop operations and analyze their time complexity.",p:"2022-23",m:10,d:"Easy"},
+{u:2,no:"2022Q2(b)",q:"Explain applications of stack with example of infix to postfix conversion.",p:"2022-23",m:10,d:"Medium"},
+{u:2,no:"2022Q2(c)",q:"Evaluate postfix expression using stack.",p:"2022-23",m:10,d:"Medium"},
+{u:2,no:"2023OddQ3(a)",q:"Define queue. Write algorithm for insertion and deletion in simple queue.",p:"2023-24 Odd",m:10,d:"Easy"},
+{u:2,no:"2023OddQ3(b)",q:"Explain circular queue with insertion and deletion algorithms.",p:"2023-24 Odd",m:10,d:"Medium"},
+{u:2,no:"2023OddQ3(c)",q:"Explain priority queue and its applications.",p:"2023-24 Odd",m:10,d:"Easy"},
+{u:2,no:"2024EvenQ2(c)",q:"Convert infix expression to postfix and evaluate using stack.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:2,no:"2024EvenQ2(d)",q:"Explain dequeue. Write insertion and deletion algorithms.",p:"2024-25 Even",m:10,d:"Medium"},
+
+{u:2,no:"2022Q2(d)",q:"Write algorithm for conversion of infix expression to postfix expression using stack.",p:"2022-23",m:10,d:"Medium"},
+{u:2,no:"2022Q2(e)",q:"Write short note on multiple stack implementation.",p:"2022-23",m:5,d:"Easy"},
+{u:2,no:"2023EvenQ3(a)",q:"Define ADT Stack. Explain stack operations with algorithm.",p:"2023-24 Even",m:10,d:"Easy"},
+{u:2,no:"2023EvenQ3(b)",q:"Explain queue as ADT and its operations.",p:"2023-24 Even",m:10,d:"Easy"},
+{u:2,no:"2024OddQ2(a)",q:"Explain applications of stack.",p:"2024-25 Odd",m:5,d:"Easy"},
+{u:2,no:"2024OddQ2(b)",q:"Explain priority queue with suitable example.",p:"2024-25 Odd",m:10,d:"Easy"},
+
+{u:2,no:"2023EvenQ3(c)",q:"Explain circular queue. Write insertion and deletion algorithms and analyze complexity.",p:"2023-24 Even",m:10,d:"Medium"},
+{u:2,no:"2023EvenQ3(d)",q:"Differentiate between stack and queue.",p:"2023-24 Even",m:5,d:"Easy"},
+{u:2,no:"2024OddQ2(c)",q:"Write algorithm to evaluate postfix expression using stack.",p:"2024-25 Odd",m:10,d:"Medium"},
+{u:2,no:"2022Q2(f)",q:"Explain double ended queue (Deque) and its types.",p:"2022-23",m:5,d:"Easy"},
+
+// ================= UNIT 3 : LINKED LIST =================
+{u:3,no:"2023Q2(a)",q:"List advantages of doubly linked list over singly linked list.",p:"2023-24",m:5,d:"Easy"},
+{u:3,no:"2023Q3(b)",q:"Write C program to insert node at kth position in singly linked list.",p:"2023-24",m:10,d:"Medium"},
+{u:3,no:"2023Q5(c)",q:"Represent polynomial using linked list and write program to add two polynomials.",p:"2023-24",m:10,d:"Medium"},
+{u:3,no:"2024Q3(a)",q:"Explain representation of singly linked list and write traversal algorithm.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:3,no:"2024Q3(c)",q:"Explain circular linked list and write insertion and deletion algorithms.",p:"2024-25 Even",m:10,d:"Medium"},
+
+{u:3,no:"2022Q3(a)",q:"Define singly linked list. Explain representation of singly linked list in memory.",p:"2022-23",m:5,d:"Easy"},
+{u:3,no:"2022Q3(b)",q:"Write algorithm for insertion at beginning, end and specific position in singly linked list.",p:"2022-23",m:10,d:"Medium"},
+{u:3,no:"2022Q3(c)",q:"Write algorithm for deletion of a node from singly linked list.",p:"2022-23",m:10,d:"Medium"},
+{u:3,no:"2023OddQ4(a)",q:"Explain doubly linked list and write insertion and deletion algorithms.",p:"2023-24 Odd",m:10,d:"Medium"},
+{u:3,no:"2023OddQ4(b)",q:"Explain circular linked list with suitable examples.",p:"2023-24 Odd",m:10,d:"Medium"},
+{u:3,no:"2024EvenQ3(b)",q:"Explain linked representation of stack and queue.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:3,no:"2024EvenQ3(d)",q:"Write algorithm to search an element in singly linked list.",p:"2024-25 Even",m:10,d:"Easy"},
+
+{u:3,no:"2023EvenQ4(a)",q:"Write algorithm for traversing a singly linked list.",p:"2023-24 Even",m:10,d:"Easy"},
+{u:3,no:"2023EvenQ4(b)",q:"Differentiate between singly linked list and doubly linked list.",p:"2023-24 Even",m:5,d:"Easy"},
+{u:3,no:"2022Q3(d)",q:"Explain header linked list and its advantages.",p:"2022-23",m:5,d:"Easy"},
+{u:3,no:"2024OddQ3(a)",q:"Write algorithm to reverse a singly linked list.",p:"2024-25 Odd",m:10,d:"Medium"},
+{u:3,no:"2024OddQ3(b)",q:"Write algorithm for insertion and deletion in circular linked list.",p:"2024-25 Odd",m:10,d:"Medium"},
+
+// ================= UNIT 4 : TREES & GRAPHS =================
+{u:4,no:"2023Q4(a)",q:"Insert elements into AVL tree and find minimum array size.",p:"2023-24",m:10,d:"Hard"},
+{u:4,no:"2023Q4(b)",q:"Construct binary tree from inorder and postorder traversal.",p:"2023-24",m:10,d:"Hard"},
+{u:4,no:"2024Q4(a)",q:"Define BST. Write insertion algorithm and analyze complexity.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:4,no:"2024Q4(c)",q:"Define DFS and BFS. Give algorithm and complexity.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:4,no:"2024OddQ2(b)",q:"Explain graph representation in memory.",p:"2024-25 Odd",m:10,d:"Easy"},
+
+{u:4,no:"2022Q4(a)",q:"Define tree. Explain basic tree terminologies with suitable examples.",p:"2022-23",m:5,d:"Easy"},
+{u:4,no:"2022Q4(b)",q:"Explain binary tree and its types.",p:"2022-23",m:5,d:"Easy"},
+{u:4,no:"2022Q4(c)",q:"Write algorithm for insertion and deletion in Binary Search Tree and analyze complexity.",p:"2022-23",m:10,d:"Medium"},
+{u:4,no:"2023OddQ5(a)",q:"Construct binary tree from inorder and preorder traversal.",p:"2023-24 Odd",m:10,d:"Hard"},
+{u:4,no:"2023OddQ5(b)",q:"Explain AVL tree. Perform insertion and show rotations.",p:"2023-24 Odd",m:10,d:"Hard"},
+{u:4,no:"2023EvenQ4(a)",q:"Explain threaded binary tree.",p:"2023-24 Even",m:10,d:"Medium"},
+{u:4,no:"2024EvenQ4(b)",q:"Explain B-tree and B+ tree with examples.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:4,no:"2024EvenQ4(c)",q:"Explain BFS and DFS traversal algorithms with complexity.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:4,no:"2024OddQ3(a)",q:"Explain graph representations (Adjacency matrix and adjacency list).",p:"2024-25 Odd",m:10,d:"Easy"},
+
+{u:4,no:"2022Q4(d)",q:"Explain applications of binary tree.",p:"2022-23",m:5,d:"Easy"},
+{u:4,no:"2023EvenQ4(b)",q:"Write algorithm for insertion and deletion in AVL tree.",p:"2023-24 Even",m:10,d:"Hard"},
+{u:4,no:"2023EvenQ4(c)",q:"Explain Binary Search Tree and its properties.",p:"2023-24 Even",m:10,d:"Medium"},
+{u:4,no:"2024OddQ3(b)",q:"Explain graph traversal techniques.",p:"2024-25 Odd",m:10,d:"Easy"},
+{u:4,no:"2022Q4(e)",q:"Differentiate between tree and graph.",p:"2022-23",m:5,d:"Easy"},
+
+// ================= UNIT 5 : SORTING & HASHING =================
+{u:5,no:"2023Q3(a)",q:"Explain hashing, division method and collision resolution techniques.",p:"2023-24",m:10,d:"Medium"},
+{u:5,no:"2023Q3(c)",q:"Explain insertion sort with example and time complexity.",p:"2023-24",m:10,d:"Medium"},
+{u:5,no:"2024Q5(a)",q:"Describe Quick sort. Explain pivot selection and complexity.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:5,no:"2024Q5(b)",q:"Explain separate chaining and open addressing in hashing.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:5,no:"2024Q5(c)",q:"Explain selection sort and insertion sort. Compare complexities.",p:"2024-25 Even",m:10,d:"Easy"},
+{u:5,no:"2022Q5(a)",q:"Explain selection sort with algorithm and complexity analysis.",p:"2022-23",m:10,d:"Easy"},
+{u:5,no:"2022Q5(b)",q:"Explain bubble sort and insertion sort with suitable examples.",p:"2022-23",m:10,d:"Easy"},
+{u:5,no:"2022Q5(c)",q:"Explain quick sort algorithm and analyze its best, average and worst case complexity.",p:"2022-23",m:10,d:"Medium"},
+{u:5,no:"2023OddQ6(a)",q:"Explain merge sort algorithm with example.",p:"2023-24 Odd",m:10,d:"Medium"},
+{u:5,no:"2023OddQ6(b)",q:"Explain heap sort and its complexity.",p:"2023-24 Odd",m:10,d:"Medium"},
+{u:5,no:"2023EvenQ5(a)",q:"Compare quick sort and merge sort.",p:"2023-24 Even",m:10,d:"Easy"},
+{u:5,no:"2023EvenQ5(b)",q:"Define hashing. Explain hashing functions and collision resolution techniques.",p:"2023-24 Even",m:10,d:"Medium"},
+{u:5,no:"2024EvenQ5(a)",q:"Explain symbol table and hashing with suitable example.",p:"2024-25 Even",m:10,d:"Easy"},
+{u:5,no:"2024EvenQ5(b)",q:"Explain separate chaining and open addressing.",p:"2024-25 Even",m:10,d:"Medium"},
+{u:5,no:"2024OddQ4(c)",q:"Compare selection sort, insertion sort and bubble sort.",p:"2024-25 Odd",m:10,d:"Easy"},
+
+{u:5,no:"2022Q5(d)",q:"Explain objective and properties of sorting algorithms.",p:"2022-23",m:5,d:"Easy"},
+{u:5,no:"2023EvenQ5(c)",q:"Explain performance comparison of sorting algorithms.",p:"2023-24 Even",m:10,d:"Easy"},
+{u:5,no:"2024OddQ4(a)",q:"Explain hashing functions with examples.",p:"2024-25 Odd",m:5,d:"Easy"},
+{u:5,no:"2024OddQ4(b)",q:"Explain collision resolution techniques in hashing.",p:"2024-25 Odd",m:10,d:"Medium"}
+  
+];
+
+const grid=document.getElementById('grid');
+const title=document.getElementById('title');
+const count=document.getElementById('count');
+
+function diffClass(d){return d==='Easy'?'diff-easy':d==='Medium'?'diff-med':'diff-hard'}
+
+function render(list){grid.innerHTML='';list.forEach(q=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<div class="tags"><span class="tag unit">Unit ${q.u}</span><span class="tag ${diffClass(q.d)}">${q.d}</span></div><div class="q"><span class="qno">${q.no}</span>${q.q}</div><div class="meta"><span>${q.p}</span><span>${q.m} Marks</span></div>`;grid.appendChild(c)});count.innerText=list.length+' Questions'}
+
+function filter(f,el){
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  el.classList.add('active');
+  let data=Q,t='All Questions';
+  if(f==='pred'){data=Q.filter(x=>x.pred===true);t='Predicted Questions'}
+  else if(f!=='all'){data=Q.filter(x=>x.u===f);t='Unit '+f+' Questions'}
+  title.innerText=t;
+  render(data)
+}
+
+document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));el.classList.add('active');let data=Q,t='All Questions';if(f!=='all'){data=Q.filter(x=>x.u===f);t='Unit '+f+' Questions'}title.innerText=t;render(data)}
+
+// ===== FINAL COUNT AUDIT =====
+(function(){
+  const unitCount = {};
+  Q.forEach(q=>{unitCount[q.u]=(unitCount[q.u]||0)+1});
+  console.log("TOTAL QUESTIONS =", Q.length);
+  console.log("UNIT-WISE COUNT =", unitCount);
+})();
+
+render(Q);
+</script>
+</body>
+</html>
+
