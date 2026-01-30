@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OOPS | Master Question Bank</title>
+    <title>DSA | Master Question Bank</title>
     <style>
         :root {
             --bg: #f8fafc;
@@ -154,6 +154,12 @@
             margin-bottom: 6px
         }
 
+        .star {
+            color: #facc15;
+            font-size: 1rem;
+            margin-left: 6px
+        }
+
         .meta {
             font-size: .8rem;
             color: var(--muted);
@@ -168,16 +174,17 @@
 <body>
     <div id="app">
         <aside>
-            <h1>OOPS (C++)</h1>
-            <p>Master Question Bank (2024–25)</p>
+            <h1>DSA</h1>
+            <p>Master Question Bank (2025–26) by ujjwal srivastav</p>
             <div class="nav">
                 <div class="nav-item active" onclick="filter('all',this)">All Questions</div>
+                <div class="nav-item" onclick="filter('repeat',this)">🔥 Most Repeated</div>
                 <div class="nav-item" onclick="filter('pred',this)">⭐ Predicted Questions</div>
                 <div class="nav-item" onclick="filter(1,this)">Unit 1 – Introduction to DSA</div>
-                <div class="nav-item" onclick="filter(2,this)">Unit 2 – Stacks & Queues</div>
-                <div class="nav-item" onclick="filter(3,this)">Unit 3 – Linked Lists</div>
-                <div class="nav-item" onclick="filter(4,this)">Unit 4 – Trees and graphs</div>
-                <div class="nav-item" onclick="filter(5,this)">Unit 5 – Sorting & Hashing</div>
+                <div class="nav-item" onclick="filter(2,this)">Unit 2 – Stacks and Queues</div>
+                <div class="nav-item" onclick="filter(3,this)">Unit 3 – Linked List</div>
+                <div class="nav-item" onclick="filter(4,this)">Unit 4 – Trees and Graphs</div>
+                <div class="nav-item" onclick="filter(5,this)">Unit 5 – Sorting and Hashing</div>
             </div>
         </aside>
         <main>
@@ -191,7 +198,7 @@
     <script>
         const Q = [
             // ================= UNIT 1 : INTRODUCTION, SEARCHING, COMPLEXITY =================
-            { u: 1, no: "2023Q1(a)", q: "Differentiate linear search and binary search.", p: "2023-24", m: 5, d: "Easy" },
+            { u: 1, no: "2023Q1(a)", repeat: true, q: "Differentiate linear search and binary search.", p: "2023-24", m: 5, d: "Easy" },
             { u: 1, no: "2023Q1(b)", q: "Define Time-Space trade-off.", p: "2023-24", m: 5, d: "Easy" },
             { u: 1, no: "2023Q1(f)", q: "Define best case, average case and worst case for analyzing the complexity of a program.", p: "2023-24", m: 5, d: "Easy" },
             { u: 1, no: "2023Q2(a)", q: "What is an algorithm? Explain time and space complexity and their trade-off.", p: "2023-24 Even", m: 5, d: "Easy" },
@@ -200,8 +207,8 @@
             { u: 1, no: "2024Q1(a)(ii)", q: "Differentiate asymptotic notations with suitable graphs.", p: "2024-25 Even", m: 5, d: "Medium" },
             { u: 1, no: "2024Q1(c)", q: "Perform binary search on given sorted array and show steps.", p: "2024-25 Even", m: 10, d: "Medium" },
 
-            { u: 1, no: "2023Q1(c)", q: "Explain asymptotic notations Big-O, Big-Ω and Big-Θ with suitable examples.", p: "2023-24", m: 10, d: "Medium" },
-            { u: 1, no: "2023Q1(d)", q: "Explain binary search algorithm and analyze best, average and worst case complexities.", p: "2023-24", m: 10, d: "Medium" },
+            { u: 1, no: "2023Q1(c)", repeat: true, q: "Explain asymptotic notations Big-O, Big-Ω and Big-Θ with suitable examples.", p: "2023-24", m: 10, d: "Medium" },
+            { u: 1, no: "2023Q1(d)", repeat: true, q: "Explain binary search algorithm and analyze best, average and worst case complexities.", p: "2023-24", m: 10, d: "Medium" },
             { u: 1, no: "2024Q1(b)", q: "Explain time complexity and space complexity of an algorithm.", p: "2024-25 Even", m: 5, d: "Easy" },
             { u: 1, no: "2024Q1(d)", q: "Compare linear search and binary search with complexity analysis.", p: "2024-25 Even", m: 10, d: "Easy" },
             { u: 1, no: "2022Q1(a)", q: "Define data structure. Explain classification of data structures.", p: "2022-23", m: 5, d: "Easy" },
@@ -222,15 +229,15 @@
             { u: 1, no: "2022Q1(f)", q: "Differentiate between linear and non-linear data structures.", p: "2022-23", m: 5, d: "Easy" },
 
             // ================= UNIT 2 : STACKS & QUEUES =================
-            { u: 2, no: "2023Q5(a)", q: "What do you mean by stack? Explain all stack operations with example.", p: "2023-24", m: 10, d: "Easy" },
-            { u: 2, no: "2023Q4(c)", q: "What is circular queue? Write a C code to insert an element in circular queue.", p: "2023-24", m: 10, d: "Medium" },
+            { u: 2, no: "2023Q5(a)", repeat: true, q: "What do you mean by stack? Explain all stack operations with example.", p: "2023-24", m: 10, d: "Easy" },
+            { u: 2, no: "2023Q4(c)", repeat: true, q: "What is circular queue? Write a C code to insert an element in circular queue.", p: "2023-24", m: 10, d: "Medium" },
             { u: 2, no: "2023Q2(d)", q: "Write short note on Priority Queue.", p: "2023-24", m: 5, d: "Easy" },
             { u: 2, no: "2024Q2(a)", q: "Evaluate stack and queue operations and postfix expression.", p: "2024-25 Even", m: 10, d: "Medium" },
-            { u: 2, no: "2024Q2(b)", q: "Convert infix expression into postfix using stack.", p: "2024-25 Even", m: 10, d: "Medium" },
+            { u: 2, no: "2024Q2(b)", conceptRepeat: true, q: "Convert infix expression into postfix using stack.", p: "2024-25 Even", m: 10, d: "Medium" },
 
             { u: 2, no: "2022Q2(a)", q: "Define stack. Write algorithms for push and pop operations and analyze their time complexity.", p: "2022-23", m: 10, d: "Easy" },
             { u: 2, no: "2022Q2(b)", q: "Explain applications of stack with example of infix to postfix conversion.", p: "2022-23", m: 10, d: "Medium" },
-            { u: 2, no: "2022Q2(c)", q: "Evaluate postfix expression using stack.", p: "2022-23", m: 10, d: "Medium" },
+            { u: 2, no: "2022Q2(c)", conceptRepeat: true, q: "Evaluate postfix expression using stack.", p: "2022-23", m: 10, d: "Medium" },
             { u: 2, no: "2023OddQ3(a)", q: "Define queue. Write algorithm for insertion and deletion in simple queue.", p: "2023-24 Odd", m: 10, d: "Easy" },
             { u: 2, no: "2023OddQ3(b)", q: "Explain circular queue with insertion and deletion algorithms.", p: "2023-24 Odd", m: 10, d: "Medium" },
             { u: 2, no: "2023OddQ3(c)", q: "Explain priority queue and its applications.", p: "2023-24 Odd", m: 10, d: "Easy" },
@@ -251,13 +258,13 @@
 
             // ================= UNIT 3 : LINKED LIST =================
             { u: 3, no: "2023Q2(a)", q: "List advantages of doubly linked list over singly linked list.", p: "2023-24", m: 5, d: "Easy" },
-            { u: 3, no: "2023Q3(b)", q: "Write C program to insert node at kth position in singly linked list.", p: "2023-24", m: 10, d: "Medium" },
+            { u: 3, no: "2023Q3(b)", repeat: true, q: "Write C program to insert node at kth position in singly linked list.", p: "2023-24", m: 10, d: "Medium" },
             { u: 3, no: "2023Q5(c)", q: "Represent polynomial using linked list and write program to add two polynomials.", p: "2023-24", m: 10, d: "Medium" },
             { u: 3, no: "2024Q3(a)", q: "Explain representation of singly linked list and write traversal algorithm.", p: "2024-25 Even", m: 10, d: "Medium" },
-            { u: 3, no: "2024Q3(c)", q: "Explain circular linked list and write insertion and deletion algorithms.", p: "2024-25 Even", m: 10, d: "Medium" },
+            { u: 3, no: "2024Q3(c)", repeat: true, q: "Explain circular linked list and write insertion and deletion algorithms.", p: "2024-25 Even", m: 10, d: "Medium" },
 
             { u: 3, no: "2022Q3(a)", q: "Define singly linked list. Explain representation of singly linked list in memory.", p: "2022-23", m: 5, d: "Easy" },
-            { u: 3, no: "2022Q3(b)", q: "Write algorithm for insertion at beginning, end and specific position in singly linked list.", p: "2022-23", m: 10, d: "Medium" },
+            { u: 3, no: "2022Q3(b)", conceptRepeat: true, q: "Write algorithm for insertion at beginning, end and specific position in singly linked list.", p: "2022-23", m: 10, d: "Medium" },
             { u: 3, no: "2022Q3(c)", q: "Write algorithm for deletion of a node from singly linked list.", p: "2022-23", m: 10, d: "Medium" },
             { u: 3, no: "2023OddQ4(a)", q: "Explain doubly linked list and write insertion and deletion algorithms.", p: "2023-24 Odd", m: 10, d: "Medium" },
             { u: 3, no: "2023OddQ4(b)", q: "Explain circular linked list with suitable examples.", p: "2023-24 Odd", m: 10, d: "Medium" },
@@ -273,13 +280,13 @@
             // ================= UNIT 4 : TREES & GRAPHS =================
             { u: 4, no: "2023Q4(a)", q: "Insert elements into AVL tree and find minimum array size.", p: "2023-24", m: 10, d: "Hard" },
             { u: 4, no: "2023Q4(b)", q: "Construct binary tree from inorder and postorder traversal.", p: "2023-24", m: 10, d: "Hard" },
-            { u: 4, no: "2024Q4(a)", q: "Define BST. Write insertion algorithm and analyze complexity.", p: "2024-25 Even", m: 10, d: "Medium" },
-            { u: 4, no: "2024Q4(c)", q: "Define DFS and BFS. Give algorithm and complexity.", p: "2024-25 Even", m: 10, d: "Medium" },
+            { u: 4, no: "2024Q4(a)", repeat: true, q: "Define BST. Write insertion algorithm and analyze complexity.", p: "2024-25 Even", m: 10, d: "Medium" },
+            { u: 4, no: "2024Q4(c)", repeat: true, q: "Define DFS and BFS. Give algorithm and complexity.", p: "2024-25 Even", m: 10, d: "Medium" },
             { u: 4, no: "2024OddQ2(b)", q: "Explain graph representation in memory.", p: "2024-25 Odd", m: 10, d: "Easy" },
 
             { u: 4, no: "2022Q4(a)", q: "Define tree. Explain basic tree terminologies with suitable examples.", p: "2022-23", m: 5, d: "Easy" },
             { u: 4, no: "2022Q4(b)", q: "Explain binary tree and its types.", p: "2022-23", m: 5, d: "Easy" },
-            { u: 4, no: "2022Q4(c)", q: "Write algorithm for insertion and deletion in Binary Search Tree and analyze complexity.", p: "2022-23", m: 10, d: "Medium" },
+            { u: 4, no: "2022Q4(c)", conceptRepeat: true, q: "Write algorithm for insertion and deletion in Binary Search Tree and analyze complexity.", p: "2022-23", m: 10, d: "Medium" },
             { u: 4, no: "2023OddQ5(a)", q: "Construct binary tree from inorder and preorder traversal.", p: "2023-24 Odd", m: 10, d: "Hard" },
             { u: 4, no: "2023OddQ5(b)", q: "Explain AVL tree. Perform insertion and show rotations.", p: "2023-24 Odd", m: 10, d: "Hard" },
             { u: 4, no: "2023EvenQ4(a)", q: "Explain threaded binary tree.", p: "2023-24 Even", m: 10, d: "Medium" },
@@ -294,18 +301,18 @@
             { u: 4, no: "2022Q4(e)", q: "Differentiate between tree and graph.", p: "2022-23", m: 5, d: "Easy" },
 
             // ================= UNIT 5 : SORTING & HASHING =================
-            { u: 5, no: "2023Q3(a)", q: "Explain hashing, division method and collision resolution techniques.", p: "2023-24", m: 10, d: "Medium" },
+            { u: 5, no: "2023Q3(a)", repeat: true, q: "Explain hashing, division method and collision resolution techniques.", p: "2023-24", m: 10, d: "Medium" },
             { u: 5, no: "2023Q3(c)", q: "Explain insertion sort with example and time complexity.", p: "2023-24", m: 10, d: "Medium" },
-            { u: 5, no: "2024Q5(a)", q: "Describe Quick sort. Explain pivot selection and complexity.", p: "2024-25 Even", m: 10, d: "Medium" },
+            { u: 5, no: "2024Q5(a)", repeat: true, q: "Describe Quick sort. Explain pivot selection and complexity.", p: "2024-25 Even", m: 10, d: "Medium" },
             { u: 5, no: "2024Q5(b)", q: "Explain separate chaining and open addressing in hashing.", p: "2024-25 Even", m: 10, d: "Medium" },
             { u: 5, no: "2024Q5(c)", q: "Explain selection sort and insertion sort. Compare complexities.", p: "2024-25 Even", m: 10, d: "Easy" },
-            { u: 5, no: "2022Q5(a)", q: "Explain selection sort with algorithm and complexity analysis.", p: "2022-23", m: 10, d: "Easy" },
+            { u: 5, no: "2022Q5(a)", repeat: true, q: "Explain selection sort with algorithm and complexity analysis.", p: "2022-23", m: 10, d: "Easy" },
             { u: 5, no: "2022Q5(b)", q: "Explain bubble sort and insertion sort with suitable examples.", p: "2022-23", m: 10, d: "Easy" },
-            { u: 5, no: "2022Q5(c)", q: "Explain quick sort algorithm and analyze its best, average and worst case complexity.", p: "2022-23", m: 10, d: "Medium" },
+            { u: 5, no: "2022Q5(c)", conceptRepeat: true, q: "Explain quick sort algorithm and analyze its best, average and worst case complexity.", p: "2022-23", m: 10, d: "Medium" },
             { u: 5, no: "2023OddQ6(a)", q: "Explain merge sort algorithm with example.", p: "2023-24 Odd", m: 10, d: "Medium" },
             { u: 5, no: "2023OddQ6(b)", q: "Explain heap sort and its complexity.", p: "2023-24 Odd", m: 10, d: "Medium" },
             { u: 5, no: "2023EvenQ5(a)", q: "Compare quick sort and merge sort.", p: "2023-24 Even", m: 10, d: "Easy" },
-            { u: 5, no: "2023EvenQ5(b)", q: "Define hashing. Explain hashing functions and collision resolution techniques.", p: "2023-24 Even", m: 10, d: "Medium" },
+            { u: 5, no: "2023EvenQ5(b)", conceptRepeat: true, q: "Define hashing. Explain hashing functions and collision resolution techniques.", p: "2023-24 Even", m: 10, d: "Medium" },
             { u: 5, no: "2024EvenQ5(a)", q: "Explain symbol table and hashing with suitable example.", p: "2024-25 Even", m: 10, d: "Easy" },
             { u: 5, no: "2024EvenQ5(b)", q: "Explain separate chaining and open addressing.", p: "2024-25 Even", m: 10, d: "Medium" },
             { u: 5, no: "2024OddQ4(c)", q: "Compare selection sort, insertion sort and bubble sort.", p: "2024-25 Odd", m: 10, d: "Easy" },
@@ -323,25 +330,38 @@
 
         function diffClass(d) { return d === 'Easy' ? 'diff-easy' : d === 'Medium' ? 'diff-med' : 'diff-hard' }
 
-        function render(list) { grid.innerHTML = ''; list.forEach(q => { const c = document.createElement('div'); c.className = 'card'; c.innerHTML = `<div class="tags"><span class="tag unit">Unit ${q.u}</span><span class="tag ${diffClass(q.d)}">${q.d}</span></div><div class="q"><span class="qno">${q.no}</span>${q.q}</div><div class="meta"><span>${q.p}</span><span>${q.m} Marks</span></div>`; grid.appendChild(c) }); count.innerText = list.length + ' Questions' }
+        function render(list) {
+            grid.innerHTML = '';
+            list.forEach(q => {
+                const c = document.createElement('div');
+                c.className = 'card';
+                const star = (q.repeat || q.conceptRepeat) ? '<span class="star">★</span>' : '';
+                c.innerHTML = `<div class="tags"><span class="tag unit">Unit ${q.u}</span><span class="tag ${diffClass(q.d)}">${q.d}</span>${star}</div><div class="q"><span class="qno">${q.no}</span>${q.q}</div><div class="meta"><span>${q.p}</span><span>${q.m} Marks</span></div>`;
+                grid.appendChild(c)
+            });
+            count.innerText = list.length + ' Questions'
+        }
 
         function filter(f, el) {
             document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-            el.classList.add('active');
+            if (el) el.classList.add('active');
             let data = Q, t = 'All Questions';
-            if (f === 'pred') { data = Q.filter(x => x.pred === true); t = 'Predicted Questions' }
+            if (f === 'repeat') { data = Q.filter(x => x.repeat === true || x.conceptRepeat === true); t = 'Most Repeated Questions' }
+            else if (f === 'pred') { data = Q.filter(x => x.pred === true); t = 'Predicted Questions' }
             else if (f !== 'all') { data = Q.filter(x => x.u === f); t = 'Unit ' + f + ' Questions' }
             title.innerText = t;
             render(data)
         }
 
-        // ===== FINAL COUNT AUDIT =====
-        (function () {
-            const unitCount = {};
-            Q.forEach(q => { unitCount[q.u] = (unitCount[q.u] || 0) + 1 });
-            console.log("TOTAL QUESTIONS =", Q.length);
-            console.log("UNIT-WISE COUNT =", unitCount);
-        })();
+        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active')); el.classList.add('active'); let data = Q, t = 'All Questions'; if (f !== 'all') { data = Q.filter(x => x.u === f); t = 'Unit ' + f + ' Questions' } title.innerText = t; render(data)
+
+            // ===== FINAL COUNT AUDIT =====
+            (function () {
+                const unitCount = {};
+                Q.forEach(q => { unitCount[q.u] = (unitCount[q.u] || 0) + 1 });
+                console.log("TOTAL QUESTIONS =", Q.length);
+                console.log("UNIT-WISE COUNT =", unitCount);
+            })();
 
         render(Q);
     </script>
